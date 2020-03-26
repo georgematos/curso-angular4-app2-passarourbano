@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
+import { OfertasService } from '../services/ofertas.service';
 
 @Component({
   selector: 'purb-home',
@@ -10,6 +11,8 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    let ofserv: OfertasService = new OfertasService();
+    console.log(ofserv.getOfertas());
   }
 
 }
