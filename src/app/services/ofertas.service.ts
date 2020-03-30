@@ -14,10 +14,10 @@ export class OfertasService {
       valor: 29.90,
       destaque: true,
       imagens: [
-        {url: "/assets/ofertas/1/img1.jpg"},
-        {url: "/assets/ofertas/1/img2.jpg"},
-        {url: "/assets/ofertas/1/img3.jpg"},
-        {url: "/assets/ofertas/1/img4.jpg"}
+        { url: "/assets/ofertas/1/img1.jpg" },
+        { url: "/assets/ofertas/1/img2.jpg" },
+        { url: "/assets/ofertas/1/img3.jpg" },
+        { url: "/assets/ofertas/1/img4.jpg" }
       ]
     },
     {
@@ -29,10 +29,10 @@ export class OfertasService {
       valor: 32.90,
       destaque: true,
       imagens: [
-        {url: "/assets/ofertas/2/img1.jpg"},
-        {url: "/assets/ofertas/2/img2.jpg"},
-        {url: "/assets/ofertas/2/img3.jpg"},
-        {url: "/assets/ofertas/2/img4.jpg"}
+        { url: "/assets/ofertas/2/img1.jpg" },
+        { url: "/assets/ofertas/2/img2.jpg" },
+        { url: "/assets/ofertas/2/img3.jpg" },
+        { url: "/assets/ofertas/2/img4.jpg" }
       ]
 
     },
@@ -45,12 +45,12 @@ export class OfertasService {
       valor: 31.90,
       destaque: true,
       imagens: [
-        {url: "/assets/ofertas/3/img1.jpg"},
-        {url: "/assets/ofertas/3/img2.jpg"},
-        {url: "/assets/ofertas/3/img3.jpg"},
-        {url: "/assets/ofertas/3/img4.jpg"},
-        {url: "/assets/ofertas/3/img5.jpg"},
-        {url: "/assets/ofertas/3/img6.jpg"}
+        { url: "/assets/ofertas/3/img1.jpg" },
+        { url: "/assets/ofertas/3/img2.jpg" },
+        { url: "/assets/ofertas/3/img3.jpg" },
+        { url: "/assets/ofertas/3/img4.jpg" },
+        { url: "/assets/ofertas/3/img5.jpg" },
+        { url: "/assets/ofertas/3/img6.jpg" }
       ]
     }
   ];
@@ -63,10 +63,10 @@ export class OfertasService {
     return new Promise((resolve, reject) => {
       // algum processamento que ao ser finalizado chamará a funcao resolve ou reject
       let ok = false;
-      if(ok) {
+      if (ok) {
         resolve(this.ofertas);
       } else {
-        reject({'error_code':'404', 'error_msg':'Objeto nao encontrado'});
+        reject({ 'error_code': '404', 'error_msg': 'Objeto nao encontrado' });
       }
     });
   }
