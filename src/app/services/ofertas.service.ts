@@ -59,4 +59,16 @@ export class OfertasService {
     return this.ofertas;
   }
 
+  public getOfertas2(): Promise<Array<Oferta>> {
+    return new Promise((resolve, reject) => {
+      // algum processamento que ao ser finalizado chamará a funcao resolve ou reject
+      let ok = false;
+      if(ok) {
+        resolve(this.ofertas);
+      } else {
+        reject({'error_code':'404', 'error_msg':'Objeto nao encontrado'});
+      }
+    });
+  }
+
 }
