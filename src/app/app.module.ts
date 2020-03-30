@@ -17,7 +17,7 @@ import { OfertasService } from './services/ofertas.service';
   imports: [
     BrowserModule
   ],
-  providers: [ OfertasService ],
+  providers: [OfertasService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
