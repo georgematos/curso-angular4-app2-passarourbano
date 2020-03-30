@@ -1,4 +1,6 @@
-import { Oferta } from '../models/oferta.model'
+import { Oferta } from '../models/oferta.model';
+import { ImagemSrc } from '../models/imagem_src.model';
+
 
 export class OfertasService {
 
