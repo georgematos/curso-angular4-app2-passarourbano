@@ -32,3 +32,7 @@ h3 {
 .fixed-top {
   background-color: white;
 }
+
+.main-row {
+  margin-bottom: 100px;
+}

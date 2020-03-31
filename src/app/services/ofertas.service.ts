@@ -12,7 +12,7 @@ export class OfertasService {
   }
 
   public getOfertas(): Promise<Oferta[]> {
-    return this.http.get(`${this.url}/ofertas`)
+    return this.http.get(`${this.url}/ofertas?destaque=true`)
       .toPromise()
       .then((resposta: any) => resposta);
   }
