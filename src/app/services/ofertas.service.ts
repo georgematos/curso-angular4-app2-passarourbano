@@ -62,13 +62,19 @@ export class OfertasService {
   public getOfertas2(): Promise<Array<Oferta>> {
     return new Promise((resolve, reject) => {
       // algum processamento que ao ser finalizado chamará a funcao resolve ou reject
-      let ok = false;
+      let ok = true;
       if (ok) {
-        resolve(this.ofertas);
+        setTimeout(() => {
+          resolve(this.ofertas);
+        }, 3000);
       } else {
         reject({ 'error_code': '404', 'error_msg': 'Objeto nao encontrado' });
       }
-    });
+    }).then((ofertas: Array<Oferta>) => {
+      // aqui podemos fazer alguma outra tratativa antes de enviar os dados para quem chamou a funcao
+      console.log('primeira tratativa')
+      return ofertas;
+    }); // pode-se usar quantos then forem necessarios em cascata inclusive com outra promises
   }
 
 }
