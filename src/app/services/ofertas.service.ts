@@ -1,8 +1,13 @@
+import { Http } from '@angular/http';
 import { Oferta } from '../models/oferta.model';
-import { ImagemSrc } from '../models/imagem_src.model';
+import { Injectable } from '@angular/core';
 
-
+@Injectable()
 export class OfertasService {
+
+  constructor(private http: Http) {
+
+  }
 
   public ofertas: Array<Oferta> = [
     {

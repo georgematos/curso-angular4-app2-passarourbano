@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { TopoComponent } from './topo/topo.component';
 import { HomeComponent } from './home/home.component';
 import { RodapeComponent } from './rodape/rodape.component';
-import { OfertasService } from './services/ofertas.service';
 
 @NgModule({
   declarations: [
@@ -15,9 +15,10 @@ import { OfertasService } from './services/ofertas.service';
     RodapeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule
   ],
-  providers: [OfertasService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

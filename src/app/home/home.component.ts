@@ -5,7 +5,8 @@ import { Oferta } from "../models/oferta.model";
 @Component({
   selector: "purb-home",
   templateUrl: "./home.component.html",
-  styleUrls: ["./home.component.css"]
+  styleUrls: ["./home.component.css"],
+  providers: [OfertasService]
 })
 export class HomeComponent implements OnInit {
   public ofertas: Array<Oferta>;
