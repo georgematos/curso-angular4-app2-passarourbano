@@ -17,10 +17,8 @@ export class OfertaComponent implements OnInit {
   public oferta: Oferta;
 
   constructor(private route: ActivatedRoute, public ofertaService: OfertasService) {
-    this.route.params.subscribe((params: any) => {
-      this.ofertaId = params.id;
-    })
-   }
+    this.ofertaId = this.route.snapshot.params["id"];
+  }
 
   ngOnInit(): void {
     this.ofertaService.getOferta(this.ofertaId)
