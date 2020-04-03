@@ -18,9 +18,9 @@ export class OfertasService {
   }
 
   public getOferta(id: string): Promise<Oferta> {
-    return this.http.get(`${this.url}/ofertas/${id}`)
+    return this.http.get(`${this.url}/ofertas?id=${id}`)
       .toPromise()
-      .then((resposta: any) => resposta);
+      .then((resposta: any) => resposta.shift()); // shift remove o primeiro elemento e desloca todos os outros elementos 1 posição para esquerda
   }
 
   public getOfertasPorCategoria(categoria: string): Promise<Oferta[]> {

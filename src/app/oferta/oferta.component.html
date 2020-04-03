@@ -14,9 +14,7 @@
         </div>
 
         <div class="thumbnails">
-          <img [src]="oferta.imagens[1].url" />
-          <img [src]="oferta.imagens[2].url" />
-          <img [src]="oferta.imagens[3].url" />
+          <img *ngFor="let imagem of oferta.imagens" [src]="imagem.url" />
         </div>
       </div>
 
