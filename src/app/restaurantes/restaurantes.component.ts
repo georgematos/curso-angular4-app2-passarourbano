@@ -17,7 +17,7 @@ export class RestaurantesComponent implements OnInit {
   constructor(public ofertaService: OfertasService) { }
 
   ngOnInit(): void {
-    this.ofertaService.getOfertasRestaurante()
+    this.ofertaService.getOfertasPorCategoria('restaurante')
       .then((ofertas: Array<Oferta>) => {
         this.ofertas = ofertas;
       })

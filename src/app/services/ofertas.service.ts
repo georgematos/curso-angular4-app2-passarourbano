@@ -17,14 +17,8 @@ export class OfertasService {
       .then((resposta: any) => resposta);
   }
 
-  public getOfertasDiversao(): Promise<Oferta[]> {
-    return this.http.get(`${this.url}/ofertas?categoria=diversao`)
-      .toPromise()
-      .then((resposta: any) => resposta);
-  }
-
-  public getOfertasRestaurante(): Promise<Oferta[]> {
-    return this.http.get(`${this.url}/ofertas?categoria=restaurante`)
+  public getOfertasPorCategoria(categoria: string): Promise<Oferta[]> {
+    return this.http.get(`${this.url}/ofertas?categoria=${categoria}`)
       .toPromise()
       .then((resposta: any) => resposta);
   }
