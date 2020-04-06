@@ -26,7 +26,7 @@ export class OfertaComponent implements OnInit {
         console.log(oferta);
         this.oferta = oferta;
       })
-      .catch((error) => {});
+      .catch((error) => { });
 
   }
 
