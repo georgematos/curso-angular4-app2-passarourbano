@@ -28,4 +28,12 @@ export class OfertasService {
       .then((resposta: any) => resposta);
   }
 
+  public getComoUsarOfertaPorId(id: number): Promise<string> {
+    return this.http.get(`${URL_API}/como-usar/?id=${id}`)
+      .toPromise()
+      .then((resposta: any) => {
+        return resposta[0].descricao;
+      })
+  }
+
 }

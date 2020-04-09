@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { OfertasService } from 'src/app/services/ofertas.service';
+import { Oferta } from 'src/app/models/oferta.model';
 
 @Component({
   selector: 'purb-como-usar',
@@ -8,11 +10,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ComoUsarComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute ) { }
+  public comoUsar: string;
+
+  constructor(private route: ActivatedRoute, private ofertaService: OfertasService) { }
 
   ngOnInit(): void {
     let id = this.route.parent.snapshot.params['id'];
-    console.log("id da rota pai: " + id);
+    this.ofertaService.getComoUsarOfertaPorId(id)
+      .then((resposta: string) => {
+        this.comoUsar = resposta;
+        console.log(this.comoUsar)
+      })
   }
 
 }
