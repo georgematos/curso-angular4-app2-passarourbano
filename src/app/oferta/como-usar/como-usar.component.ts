@@ -19,7 +19,6 @@ export class ComoUsarComponent implements OnInit {
     this.ofertaService.getComoUsarOfertaPorId(id)
       .then((resposta: string) => {
         this.comoUsar = resposta;
-        console.log(this.comoUsar)
       })
   }
 

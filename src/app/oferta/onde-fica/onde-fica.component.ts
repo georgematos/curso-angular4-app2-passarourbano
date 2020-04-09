@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { OfertasService } from 'src/app/services/ofertas.service';
 
 @Component({
   selector: 'purb-onde-fica',
@@ -8,11 +9,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class OndeFicaComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) { }
+  public ondeFica: string;
+
+  constructor(private route: ActivatedRoute, private ofertaService: OfertasService) { }
 
   ngOnInit(): void {
     let id = this.route.parent.snapshot.params['id'];
-    console.log("id da rota pai: " + id);
+    this.ofertaService.getOndeFicaOfertaPorId(id)
+      .then((resposta) => {
+        this.ondeFica = resposta;
+      })
   }
 
 }
