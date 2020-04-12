@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { OfertasService } from '../services/ofertas.service';
+import { interval } from 'rxjs';
 import { Oferta } from '../models/oferta.model';
+import { OfertasService } from '../services/ofertas.service';
 
 @Component({
   selector: 'purb-oferta',
@@ -34,6 +35,12 @@ export class OfertaComponent implements OnInit {
       //   (erro: any) => { console.log(erro)},
       //   () => console.log('processamento foi classificado como conclunído')
       // );
+
+      const tempo = interval(2000);
+
+      tempo.subscribe((intervalo: number) => {
+        console.log(intervalo);
+      })
   }
 
 
