@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { interval } from 'rxjs';
+import { interval, Observable, Observer } from 'rxjs';
 import { Oferta } from '../models/oferta.model';
 import { OfertasService } from '../services/ofertas.service';
 
@@ -36,11 +36,26 @@ export class OfertaComponent implements OnInit {
       //   () => console.log('processamento foi classificado como conclunído')
       // );
 
-      const tempo = interval(2000);
+      // const tempo = interval(2000);
 
-      tempo.subscribe((intervalo: number) => {
-        console.log(intervalo);
-      })
+      // tempo.subscribe((intervalo: number) => {
+      //   console.log(intervalo);
+      // })
+
+      // observable (observável)
+      let meuObservable = Observable.create((observer: Observer<string>) => {
+        observer.next('Primeiro evento da stream');
+        observer.next('Segundo evento da stream');
+      });
+
+      // observable (observador)
+      meuObservable.subscribe(
+        /*acao*/ (resultado: string) => {
+          console.log(resultado);
+        },
+        /*erro*/ () => {},
+        /*conclusao*/ () => {}
+      );
   }
 
 
