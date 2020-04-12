@@ -46,6 +46,9 @@ export class OfertaComponent implements OnInit {
       let meuObservable = Observable.create((observer: Observer<string>) => {
         observer.next('Primeiro evento da stream');
         observer.next('Segundo evento da stream');
+        // observer.error('algum erro foi encontrado');
+        observer.complete();
+        observer.next('Esse evento nao vai ser disparado, pois houve um erro ou o fluxo foi finalizado');
       });
 
       // observable (observador)
@@ -53,8 +56,12 @@ export class OfertaComponent implements OnInit {
         /*acao*/ (resultado: string) => {
           console.log(resultado);
         },
-        /*erro*/ () => {},
-        /*conclusao*/ () => {}
+        /*erro*/ (error: string) => {
+          console.log(error);
+        },
+        /*conclusao*/ () => {
+          console.log("Aplicacao finalizada")
+        }
       );
   }
 
