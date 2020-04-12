@@ -23,11 +23,16 @@ export class OfertaComponent implements OnInit {
   ngOnInit(): void {
     this.ofertaService.getOferta(this.ofertaId)
       .then((oferta: Oferta) => {
-        console.log(oferta);
         this.oferta = oferta;
       })
       .catch((error) => { });
 
+      this.route.params.subscribe(
+        (parametro: any) => { console.log(parametro)},
+        (erro: any) => { console.log(erro)},
+        () => console.log('processamento foi classificado como conclunído')
+      );
   }
+
 
 }
