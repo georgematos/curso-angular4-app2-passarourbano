@@ -12,8 +12,8 @@ export class TopoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public pesquisa(event: KeyboardEvent): void {
-    console.log(event.key);
+  public pesquisa(termoDaBusca: string): void {
+    console.log(termoDaBusca);
   }
 
 }
