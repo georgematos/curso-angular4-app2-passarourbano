@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { interval, Observable, Observer } from 'rxjs';
+import { interval, Observable, Observer, Subscription } from 'rxjs';
 import { Oferta } from '../models/oferta.model';
 import { OfertasService } from '../services/ofertas.service';
 
@@ -12,10 +12,13 @@ import { OfertasService } from '../services/ofertas.service';
     OfertasService
   ]
 })
-export class OfertaComponent implements OnInit {
+export class OfertaComponent implements OnInit, OnDestroy {
 
   private ofertaId: string;
   public oferta: Oferta;
+
+  private tempoObservableSubscription: Subscription;
+  private meuObservableSubscription: Subscription;
 
   constructor(private route: ActivatedRoute, public ofertaService: OfertasService) {
     this.ofertaId = this.route.snapshot.params["id"];
@@ -36,11 +39,11 @@ export class OfertaComponent implements OnInit {
       //   () => console.log('processamento foi classificado como conclunído')
       // );
 
-      // const tempo = interval(2000);
+      const tempo = interval(2000);
 
-      // tempo.subscribe((intervalo: number) => {
-      //   console.log(intervalo);
-      // })
+      this.tempoObservableSubscription = tempo.subscribe((intervalo: number) => {
+        console.log(intervalo);
+      })
 
       // observable (observável)
       let meuObservable = Observable.create((observer: Observer<string>) => {
@@ -52,7 +55,7 @@ export class OfertaComponent implements OnInit {
       });
 
       // observable (observador)
-      meuObservable.subscribe(
+      this.meuObservableSubscription = meuObservable.subscribe(
         /*acao*/ (resultado: string) => {
           console.log(resultado);
         },
@@ -60,10 +63,14 @@ export class OfertaComponent implements OnInit {
           console.log(error);
         },
         /*conclusao*/ () => {
-          console.log("Aplicacao finalizada")
+          console.log("Aplicacao finalizada");
         }
       );
   }
 
+  ngOnDestroy(): void {
+    this.tempoObservableSubscription.unsubscribe();
+    this.meuObservableSubscription.unsubscribe();
+  }
 
 }
