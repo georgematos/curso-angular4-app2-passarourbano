@@ -22,9 +22,11 @@ export class TopoComponent implements OnInit {
 
   public pesquisa(termoDaBusca: string): void {
     this.ofertas = this.ofertaService.pesquisaOfertas(termoDaBusca);
-    this.ofertas.subscribe((ofertas: Oferta[]) =>  {
-      console.log(ofertas);
-    })
+    this.ofertas.subscribe(
+      (ofertas: Oferta[]) => console.log(ofertas),
+      (error: any) => console.log('(Erro) Sem resposta, status: ', error.status),
+      () => console.log('final')
+    );
   }
 
 }
