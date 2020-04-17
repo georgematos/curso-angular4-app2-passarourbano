@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OfertasService } from '../services/ofertas.service';
 import { Oferta } from '../models/oferta.model';
 import { Observable, Subject } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'purb-topo',
@@ -21,9 +21,8 @@ export class TopoComponent implements OnInit {
 
   ngOnInit(): void {
     this.ofertas = this.subjectPesquisa
-    // será disparado sempre que o next do subjectPesquisa for chamado
-      .pipe(switchMap((termo: string) => {
-        console.log('keyup caracter: ', termo);
+      .pipe(debounceTime(1000)) // executa a ação do switchMap após 1 segundo
+      .pipe(switchMap((termo: string) => { // será disparado sempre que o next do subjectPesquisa for chamado recebendo o argumento passado por ele
         return this.ofertaService.pesquisaOfertas(termo);
       }));
 
@@ -33,7 +32,6 @@ export class TopoComponent implements OnInit {
   }
 
   public pesquisa(termoDaBusca: string): void {
-    console.log('keyup caracter: ', termoDaBusca);
     this.subjectPesquisa.next(termoDaBusca);
   }
 
