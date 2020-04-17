@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { OfertasService } from '../services/ofertas.service';
+import { Observable, of, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Oferta } from '../models/oferta.model';
-import { Observable, Subject, of } from 'rxjs';
-import { switchMap, debounceTime } from 'rxjs/operators';
+import { OfertasService } from '../services/ofertas.service';
 
 @Component({
   selector: 'purb-topo',
@@ -21,18 +21,21 @@ export class TopoComponent implements OnInit {
 
   ngOnInit(): void {
     this.ofertas = this.subjectPesquisa
-      .pipe(debounceTime(1000)) // executa a ação do switchMap após 1 segundo
-      .pipe(switchMap((termo: string) => { // será disparado sempre que o next do subjectPesquisa for chamado recebendo o argumento passado por ele
-        if (termo.trim() === '') {
-          return of<Oferta[]>([]);
-        }
-        return this.ofertaService.pesquisaOfertas(termo);
-      }));
+      .pipe(
+        debounceTime(1000), // executa a ação do switchMap após 1 segundo
+        distinctUntilChanged(),
+        switchMap((termo: string) => { // será disparado sempre que o next do subjectPesquisa for chamado recebendo o argumento passado por ele
+          if (termo.trim() === '') { // evita o disparo da consulta a api quando o campo estiver vazio
+            return of<Oferta[]>([]);
+          }
+          return this.ofertaService.pesquisaOfertas(termo);
+        })
+      )
 
-    this.ofertas.subscribe((ofertas: Array<Oferta>) => {
-      console.log(ofertas);
-    })
-  }
+      this.ofertas.subscribe((ofertas: Oferta[]) => {
+        console.log(ofertas);
+      })
+    }
 
   public pesquisa(termoDaBusca: string): void {
     this.subjectPesquisa.next(termoDaBusca);
