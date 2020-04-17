@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OfertasService } from '../services/ofertas.service';
 import { Oferta } from '../models/oferta.model';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, of } from 'rxjs';
 import { switchMap, debounceTime } from 'rxjs/operators';
 
 @Component({
@@ -23,6 +23,9 @@ export class TopoComponent implements OnInit {
     this.ofertas = this.subjectPesquisa
       .pipe(debounceTime(1000)) // executa a ação do switchMap após 1 segundo
       .pipe(switchMap((termo: string) => { // será disparado sempre que o next do subjectPesquisa for chamado recebendo o argumento passado por ele
+        if (termo.trim() === '') {
+          return of<Oferta[]>([]);
+        }
         return this.ofertaService.pesquisaOfertas(termo);
       }));
 
