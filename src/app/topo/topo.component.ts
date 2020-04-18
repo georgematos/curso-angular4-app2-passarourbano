@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { Observable, of, Subject, observable } from 'rxjs';
+import { debounceTime, distinctUntilChanged, switchMap, catchError } from 'rxjs/operators';
 import { Oferta } from '../models/oferta.model';
 import { OfertasService } from '../services/ofertas.service';
 
@@ -29,6 +29,10 @@ export class TopoComponent implements OnInit {
             return of<Oferta[]>([]);
           }
           return this.ofertaService.pesquisaOfertas(termo);
+        }),
+        catchError((err: any, Observable: Observable<Oferta[]>) => {
+          console.log(err);
+          return of<Oferta[]>([]);
         })
       )
 
