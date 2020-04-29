@@ -6,18 +6,12 @@
         <div class="col-md-6">
           <!-- criacao de variável de referencia para captura-la dentro do componente (#termoDaPesquisa)
           o Angular reconhece a variavel que carrega o valor pelo # -->
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Pesquise por ofertas..."
-            #termoDaPesquisa
-            (keyup)="pesquisa(termoDaPesquisa.value)"
-            />
-            <div *ngIf="ofertas != undefined && ofertas.length > 0">
-              <ul class="list-group" style="position: absolute;">
-                <li *ngFor="let oferta of ofertas" class="list-group-item">{{ oferta.titulo | descricaoReduzida: 0 : 15 }}</li>
-              </ul>
-            </div>
+          <input type="text" class="form-control" placeholder="Pesquise por ofertas..." #termoDaPesquisa (keyup)="pesquisa(termoDaPesquisa.value)" />
+            <ul class="list-group" style="position: absolute;">
+              <li class="list-group-item" *ngFor="let oferta of ofertas | async" class="list-group-item" >
+                  {{ oferta.titulo | descricaoReduzida: 0 : 15 }}
+              </li>
+            </ul>
         </div>
         <div class="col-md-2"><a a href="#"><img src="/assets/carrinho.png" /></a></div>
       </div>
