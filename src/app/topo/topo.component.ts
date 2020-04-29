@@ -17,7 +17,6 @@ export class TopoComponent implements OnInit {
   public ofertas: Observable<Oferta[]>;
   private subjectPesquisa: Subject<string> = new Subject<string>();
 
-
   constructor(public ofertaService: OfertasService) { }
 
   ngOnInit(): void {
@@ -40,6 +39,10 @@ export class TopoComponent implements OnInit {
 
   public pesquisa(termoDaBusca: string): void {
     this.subjectPesquisa.next(termoDaBusca);
+  }
+
+  public limparPesquisa(): void {
+    this.subjectPesquisa.next('');
   }
 
 }
