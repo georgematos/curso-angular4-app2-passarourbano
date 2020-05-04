@@ -31,6 +31,8 @@ export class OrdemCompraComponent implements OnInit {
   public complementoEstadoPrimitivo: boolean = true;
   public formaPagamentoEstadoPrimitivo: boolean = true;
 
+  public idPedidoCompra: number;
+
   public formEstado: string = 'disabled';
 
   constructor(
@@ -98,7 +100,9 @@ export class OrdemCompraComponent implements OnInit {
     this.pedido.complemento = this.complemento;
     this.pedido.formaDePagamento = this.formaPagamento;
     this.ordemCompraService.efetivarCompra(this.pedido).subscribe(
-      resposta => console.log(resposta)
+      (idPedido: number) => {
+        this.idPedidoCompra = idPedido;
+      }
     );
   }
 
