@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OrdemCompraService } from '../services/ordens-compra.service';
+import { OrdemCompraService } from '../services/ordem-compra.service';
 
 @Component({
   selector: 'purb-ordem-compra',
@@ -35,7 +35,7 @@ export class OrdemCompraComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.ordemCompraService.efetivarCompra();
+    // this.ordemCompraService.efetivarCompra();
   }
 
   atualizarEndereco(endereco: string): void {
