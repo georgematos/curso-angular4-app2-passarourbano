@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrdemCompraService } from '../services/ordem-compra.service';
+import { Pedido } from '../models/pedido.model';
 
 @Component({
   selector: 'purb-ordem-compra',
@@ -10,6 +11,8 @@ import { OrdemCompraService } from '../services/ordem-compra.service';
   ]
 })
 export class OrdemCompraComponent implements OnInit {
+
+  public pedido: Pedido = new Pedido("", "", "", "");
 
   public endereco: string = '';
   public numero: string = '';
@@ -41,7 +44,7 @@ export class OrdemCompraComponent implements OnInit {
   atualizarEndereco(endereco: string): void {
     this.endereco = endereco;
     this.enderecoEstadoPrimitivo = false;
-    if (this.endereco.length > 15) {
+    if (this.endereco.length > 10) {
       this.enderecoValido = true;
     } else {
       this.enderecoValido = false;
@@ -87,6 +90,14 @@ export class OrdemCompraComponent implements OnInit {
     } else {
       this.formEstado = 'disabled';
     };
+  }
+
+  confirmarCompra(): void {
+    this.pedido.endereco = this.endereco;
+    this.pedido.numero = this.numero;
+    this.pedido.complemento = this.complemento;
+    this.pedido.formaDePagamento = this.formaPagamento;
+    this.ordemCompraService.efetivarCompra(this.pedido);
   }
 
 }
