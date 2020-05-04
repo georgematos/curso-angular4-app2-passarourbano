@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { OrdemCompraService } from '../services/ordens-compra.service';
 
 @Component({
   selector: 'purb-ordem-compra',
   templateUrl: './ordem-compra.component.html',
-  styleUrls: ['./ordem-compra.component.css']
+  styleUrls: ['./ordem-compra.component.css'],
+  providers: [
+    OrdemCompraService
+  ]
 })
 export class OrdemCompraComponent implements OnInit {
 
@@ -27,10 +30,12 @@ export class OrdemCompraComponent implements OnInit {
 
   public formEstado: string = 'disabled';
 
-  constructor() { }
+  constructor(
+    private ordemCompraService: OrdemCompraService
+  ) { }
 
   ngOnInit(): void {
-
+    this.ordemCompraService.efetivarCompra();
   }
 
   atualizarEndereco(endereco: string): void {
