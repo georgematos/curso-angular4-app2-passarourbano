@@ -75,6 +75,8 @@
       </div>
       <br />
 
+      <pre>Valido {{ formulario.valid | json }}</pre>
+      <pre>Invalido {{ formulario.invalid | json }}</pre>
       <pre>{{ formulario.form.value | json }}</pre>
       <h5>Dados de entrega</h5>
       <hr />
@@ -85,13 +87,14 @@
             type="text"
             name="endereco"
             ngModel
-            class="form-control is-invalid"
+            class="form-control"
             placeholder="Endereço"
             autocomplete="off"
-            minlength="5"
             required
+            minlength="5"
+            maxlength="120"
           />
-          <small class="form-text text-danger">Endereço inválido</small>
+          <small *ngIf="" class="form-text text-danger">Endereço inválido</small>
         </div>
 
         <div class="form-group col-md-2">
@@ -99,11 +102,12 @@
             type="text"
             name="numero"
             ngModel
-            class="form-control is-valid"
+            class="form-control"
             placeholder="Número"
             autocomplete="off"
-            minlength="1"
             required
+            minlength="1"
+            maxlength="20"
           />
           <small class="form-text text-success">Ok</small>
         </div>
@@ -126,7 +130,12 @@
 
       <div class="form-row">
         <div class="form-group col-md-3">
-          <select class="form-control is-invalid" name="formaPagamento" ngModel>
+          <select
+            class="form-control"
+            name="formaPagamento"
+            ngModel
+            required
+          >
             <option value="">Selecione uma opção</option>
             <option value="dinheiro">Dinheiro</option>
             <option value="debito">Débito</option>

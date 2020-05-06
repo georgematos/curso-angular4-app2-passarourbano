@@ -25,7 +25,7 @@ export class OrdemCompraComponent implements OnInit {
   }
 
   confirmarCompra(): void {
-    console.log(this.form.form.value);
+    console.log(this.form.form);
   }
 
 }
