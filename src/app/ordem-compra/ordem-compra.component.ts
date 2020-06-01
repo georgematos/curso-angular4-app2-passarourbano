@@ -11,6 +11,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class OrdemCompraComponent implements OnInit {
 
+  public idPedidoCompra: number;
+
   public formulario: FormGroup = new FormGroup({
     'endereco': new FormControl(null, [
       Validators.required,
@@ -28,13 +30,22 @@ export class OrdemCompraComponent implements OnInit {
     ])
   });
 
-  constructor(private ordemCompraService: OrdemCompraService) { }
+  constructor(
+    private ordemCompraService: OrdemCompraService,
+  ) { }
 
   ngOnInit() {
-
   }
 
   public confirmarCompra(): void {
-
+    let pedido = new Pedido (
+      this.formulario.value.endereco,
+      this.formulario.value.numero,
+      this.formulario.value.complemento,
+      this.formulario.value.formaPagamento
+    );
+    this.ordemCompraService.efetivarCompra(pedido).subscribe((id: number) => {
+      this.idPedidoCompra = id;
+    });
   }
 }
