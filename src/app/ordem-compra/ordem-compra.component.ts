@@ -3,7 +3,6 @@ import { OrdemCompraService } from '../services/ordem-compra.service';
 import { Pedido } from '../models/pedido.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-
 @Component({
   selector: 'app-ordem-compra',
   templateUrl: './ordem-compra.component.html',
@@ -36,6 +35,6 @@ export class OrdemCompraComponent implements OnInit {
   }
 
   public confirmarCompra(): void {
-    console.log(this.formulario);
+
   }
 }
