@@ -87,7 +87,22 @@
             autocomplete="off"
             formControlName="endereco"
           />
-          <small class="form-text text-success">Ok</small>
+          <small
+            *ngIf="
+              formulario.get('endereco').valid &&
+              formulario.get('endereco').touched
+            "
+            class="form-text text-success"
+            >Ok</small
+          >
+          <small
+            *ngIf="
+              !formulario.get('endereco').valid &&
+              formulario.get('endereco').touched
+            "
+            class="form-text text-danger"
+            >Endereço inválido</small
+          >
         </div>
 
         <div class="form-group col-md-2">
@@ -98,7 +113,21 @@
             autocomplete="off"
             formControlName="numero"
           />
-          <small class="form-text text-success">Ok</small>
+          <small
+            *ngIf="
+              formulario.get('numero').valid && formulario.get('numero').touched
+            "
+            class="form-text text-success"
+            >Ok</small
+          >
+          <small
+            *ngIf="
+              !formulario.get('numero').valid &&
+              formulario.get('numero').touched
+            "
+            class="form-text text-danger"
+            >Número inválido</small
+          >
         </div>
 
         <div class="form-group col-md-4">
@@ -123,7 +152,22 @@
             <option value="dinheiro">Dinheiro</option>
             <option value="debito">Débito</option>
           </select>
-          <small class="form-text text-success">Ok</small>
+          <small
+            *ngIf="
+              formulario.get('formaPagamento').valid &&
+              formulario.get('formaPagamento').touched
+            "
+            class="form-text text-success"
+            >Ok</small
+          >
+          <small
+            *ngIf="
+              !formulario.get('formaPagamento').valid &&
+              formulario.get('formaPagamento').touched
+            "
+            class="form-text text-danger"
+            >Escolha uma forma de pagamento</small
+          >
         </div>
       </div>
 
