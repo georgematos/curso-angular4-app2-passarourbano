@@ -278,6 +278,20 @@
       "complemento": "teste",
       "formaDePagamento": "dinheiro",
       "id": 13
+    },
+    {
+      "endereco": "teste 4",
+      "numero": "teste",
+      "complemento": "teste",
+      "formaDePagamento": "debito",
+      "id": 14
+    },
+    {
+      "endereco": "teste3",
+      "numero": "teste",
+      "complemento": "3rer",
+      "formaDePagamento": "dinheiro",
+      "id": 15
     }
   ]
 }
