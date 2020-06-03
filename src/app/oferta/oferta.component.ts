@@ -2,13 +2,16 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Oferta } from '../models/oferta.model';
 import { OfertasService } from '../services/ofertas.service';
+import CarrinhoService from '../services/carrinho.service';
+import { ItemCarrinho } from '../models/item-carrinho.model';
 
 @Component({
   selector: 'purb-oferta',
   templateUrl: './oferta.component.html',
   styleUrls: ['./oferta.component.css'],
   providers: [
-    OfertasService
+    OfertasService,
+    CarrinhoService
   ]
 })
 export class OfertaComponent implements OnInit, OnDestroy {
@@ -18,11 +21,12 @@ export class OfertaComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    public ofertaService: OfertasService
+    public ofertaService: OfertasService,
+    private carrinhoService: CarrinhoService
   ) { }
 
   ngOnInit(): void {
-
+    console.log(this.carrinhoService.exibirItens());
     this.route.params.subscribe((params: Params) => {
       this.ofertaService.getOferta(params.id)
       .then((oferta: Oferta) => {
@@ -31,6 +35,10 @@ export class OfertaComponent implements OnInit, OnDestroy {
         console.log(error);
       });
     })
+  }
+
+  public adicionarOferta(): void {
+    this.carrinhoService.adicionar(this.oferta);
   }
 
   ngOnDestroy(): void {
