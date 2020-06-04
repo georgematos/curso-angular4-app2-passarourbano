@@ -20,6 +20,8 @@ import { OrdemCompraComponent } from './ordem-compra/ordem-compra.component';
 import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra-sucesso.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { CarrinhoService } from './services/carrinho.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,10 +43,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     RouterModule.forRoot(ROUTES),
     ReactiveFormsModule
   ],
-  providers: [{
-    provide: LOCALE_ID,
-    useValue: 'pt-BR'
-  }],
+  providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt-BR',
+    },
+    CarrinhoService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

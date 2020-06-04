@@ -11,7 +11,7 @@ import { ItemCarrinho } from '../models/item-carrinho.model';
   styleUrls: ['./oferta.component.css'],
   providers: [
     OfertasService,
-    CarrinhoService
+    // CarrinhoService
   ]
 })
 export class OfertaComponent implements OnInit, OnDestroy {
@@ -26,7 +26,6 @@ export class OfertaComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.carrinhoService.exibirItens());
     this.route.params.subscribe((params: Params) => {
       this.ofertaService.getOferta(params.id)
       .then((oferta: Oferta) => {
@@ -35,10 +34,12 @@ export class OfertaComponent implements OnInit, OnDestroy {
         console.log(error);
       });
     })
+    console.log(this.carrinhoService.exibirItens());
   }
 
   public adicionarOferta(): void {
     this.carrinhoService.adicionar(this.oferta);
+    console.log(this.carrinhoService.exibirItens());
   }
 
   ngOnDestroy(): void {
