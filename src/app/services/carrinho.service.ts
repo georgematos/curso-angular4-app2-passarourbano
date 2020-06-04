@@ -1,7 +1,7 @@
 import { ItemCarrinho } from '../models/item-carrinho.model';
 import { Oferta } from '../models/oferta.model';
 
-class CarrinhoService {
+export class CarrinhoService {
   public itens: ItemCarrinho[] = [];
 
   public exibirItens(): ItemCarrinho[] {
@@ -22,5 +22,3 @@ class CarrinhoService {
   }
 
 }
-
-export default CarrinhoService;

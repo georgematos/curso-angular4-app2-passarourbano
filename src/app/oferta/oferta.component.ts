@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Oferta } from '../models/oferta.model';
 import { OfertasService } from '../services/ofertas.service';
-import CarrinhoService from '../services/carrinho.service';
+import { CarrinhoService } from '../services/carrinho.service';
 import { ItemCarrinho } from '../models/item-carrinho.model';
 
 @Component({
