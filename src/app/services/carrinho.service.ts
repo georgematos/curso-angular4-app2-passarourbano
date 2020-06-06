@@ -15,7 +15,7 @@ export class CarrinhoService {
     } else {
       let item: ItemCarrinho = new ItemCarrinho(
         oferta.id,
-        oferta.imagens[0],
+        oferta.imagens,
         oferta.titulo,
         oferta.descricao_oferta,
         oferta.valor,
