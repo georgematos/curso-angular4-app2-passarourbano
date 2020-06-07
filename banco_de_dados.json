@@ -292,6 +292,13 @@
       "complemento": "3rer",
       "formaDePagamento": "dinheiro",
       "id": 15
+    },
+    {
+      "endereco": "Rua das flores",
+      "numero": "2323",
+      "complemento": "algo",
+      "formaDePagamento": "dinheiro",
+      "id": 16
     }
   ]
 }

@@ -31,12 +31,10 @@ export class OfertaComponent implements OnInit, OnDestroy {
         console.log(error);
       });
     })
-    console.log(this.carrinhoService.exibirItens());
   }
 
   public adicionarOferta(): void {
     this.carrinhoService.adicionar(this.oferta);
-    console.log(this.carrinhoService.exibirItens());
   }
 
   ngOnDestroy(): void {
