@@ -3,6 +3,7 @@ import { OrdemCompraService } from '../services/ordem-compra.service';
 import { Pedido } from '../models/pedido.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CarrinhoService } from '../services/carrinho.service';
+import { Oferta } from '../models/oferta.model';
 
 @Component({
   selector: 'app-ordem-compra',
@@ -38,6 +39,7 @@ export class OrdemCompraComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.carrinhoService.exibirItens());
+    this.carrinhoService.getTotal();
   }
 
   public confirmarCompra(): void {
@@ -50,5 +52,13 @@ export class OrdemCompraComponent implements OnInit {
     this.ordemCompraService.efetivarCompra(pedido).subscribe((id: number) => {
       this.idPedidoCompra = id;
     });
+  }
+
+  add(oferta: Oferta) {
+    this.carrinhoService.adicionar(oferta);
+  }
+
+  remove(id: number) {
+    this.carrinhoService.remover(id);
   }
 }

@@ -1,8 +1,10 @@
 import { ItemCarrinho } from '../models/item-carrinho.model';
 import { Oferta } from '../models/oferta.model';
+import { Observable } from 'rxjs';
 
 export class CarrinhoService {
   public itens: ItemCarrinho[] = [];
+  public valorTotalCarrinho: number = 0;
 
   public exibirItens(): ItemCarrinho[] {
     return this.itens;
@@ -23,6 +25,21 @@ export class CarrinhoService {
       );
       this.itens.push(item);
     }
+    console.log(this.itens)
+    this.getTotal();
+  }
+
+  public remover(ofertaId: number) {
+    let itemcarrinho = this.itens.find(x => x.id === ofertaId);
+    if (itemcarrinho) {
+      itemcarrinho.quantidade--;
+    }
+    console.log(this.itens)
+    this.getTotal();
+  }
+
+  public getTotal(): void {
+    this.valorTotalCarrinho = this.itens.reduce((a, b) => (a + (b['valor']) * b['quantidade'] || 0), 0);
   }
 
 }
