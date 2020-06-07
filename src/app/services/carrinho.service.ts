@@ -1,6 +1,5 @@
 import { ItemCarrinho } from '../models/item-carrinho.model';
 import { Oferta } from '../models/oferta.model';
-import { Observable } from 'rxjs';
 
 export class CarrinhoService {
   public itens: ItemCarrinho[] = [];
@@ -25,7 +24,6 @@ export class CarrinhoService {
       );
       this.itens.push(item);
     }
-    console.log(this.itens)
     this.getTotal();
   }
 
