@@ -29,7 +29,7 @@ export class CarrinhoService {
 
   public remover(ofertaId: number) {
     let itemcarrinho = this.itens.find(x => x.id === ofertaId);
-    if (itemcarrinho) {
+    if (itemcarrinho && itemcarrinho.quantidade > 0) {
       itemcarrinho.quantidade--;
     }
     this.getTotal();
