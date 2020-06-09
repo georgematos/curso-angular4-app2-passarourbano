@@ -33,7 +33,7 @@
         </div>
 
         <div class="form-group col-sm-3 d-flex justify-content-end">
-          {{ item.valor | currency: 'BRL' }}
+          {{ item.valor * item.quantidade | currency: 'BRL' }}
         </div>
       </div>
 
