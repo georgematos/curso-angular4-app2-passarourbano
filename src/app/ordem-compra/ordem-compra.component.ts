@@ -54,12 +54,4 @@ export class OrdemCompraComponent implements OnInit {
       this.carrinhoService.itens = [];
     });
   }
-
-  add(oferta: Oferta) {
-    this.carrinhoService.adicionar(oferta);
-  }
-
-  remove(id: number) {
-    this.carrinhoService.remover(id);
-  }
 }
