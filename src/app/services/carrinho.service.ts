@@ -11,7 +11,7 @@ export class CarrinhoService {
   }
 
   public adicionar(oferta: Oferta) {
-    let itemcarrinho = this.itens.find(x => x.id === oferta.id);
+    let itemcarrinho = this.itens.find((item: ItemCarrinho) => item.id === oferta.id);
     if (itemcarrinho) {
       itemcarrinho.quantidade++;
     } else {
@@ -25,7 +25,6 @@ export class CarrinhoService {
       );
       this.itens.push(item);
     }
-    console.log(this.itens)
     this.getTotal();
   }
 
@@ -34,7 +33,6 @@ export class CarrinhoService {
     if (itemcarrinho) {
       itemcarrinho.quantidade--;
     }
-    console.log(this.itens)
     this.getTotal();
   }
 
