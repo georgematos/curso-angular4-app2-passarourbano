@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="ordem-compra" *ngIf="idPedidoCompra === undefined">
+  <div class="ordem-compra" *ngIf="idPedidoCompra === undefined && carrinhoService.itens.length > 0">
     <form [formGroup]="formulario" (ngSubmit)="confirmarCompra()" novalidate>
       <h5>Sua Compra</h5>
       <hr />
@@ -152,5 +152,19 @@
   </div>
   <div class="ordem-compra" *ngIf="idPedidoCompra !== undefined">
     <purb-ordem-compra-sucesso [idPedidoCompra]="idPedidoCompra"></purb-ordem-compra-sucesso>
+  </div>
+  <div class="ordem-compra" *ngIf="carrinhoService.itens.length === 0">
+    <div class="col-sm-4" style="
+    background: #fafafa;
+    text-align: center;
+    padding: 20px;
+    border-bottom: solid 1px #f0f0f0;
+    ">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Seu carrinho está vazio</h5>
+          <a href="#" class="btn btn-primary" router-link="/">Voltar às compras</a>
+        </div>
+      </div>
   </div>
 </div>
